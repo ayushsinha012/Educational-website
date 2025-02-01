@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Educational Website</title>
+    <link rel="stylesheet" href="Style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>AYUQUEST</h1>
+        <div class="logo">Course Platform</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#about">About</a></li>
+                <li class="profile-dropdown">
+                    <a href="#" id="profile-link">Profile</a>
+                    <ul class="dropdown-menu" id="profile-menu">
+                        <li><a href="#" onclick="viewProfile()">View Profile</a></li>
+                        <li><a href="#" onclick="viewCourses()">My Courses</a></li>
+                        <li><a href="#" onclick="openSettings()">Settings</a></li>
+                        <li><a href="#" onclick="logOut()">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Welcome to AyuQuest</h2>
+            <p>Welcome to AyuQuest – your ultimate destination for unlocking the power of knowledge and personal growth! At AyuQuest, we believe that learning is an exciting journey, not a destination. Our platform is designed to inspire curiosity, nurture talent, and provide a vibrant space for learners of all ages.</p>
+            <button onclick="scrollToSection('courses')">Get Started</button>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Why Choose Us?</h2>
+        <div class="features-container">
+            <div class="feature">
+                <img src="images/10853068.png" alt="Expert Instructors">
+                <h3>Expert Instructors</h3>
+                <p>Learn from industry leaders and experienced educators.</p>
+            </div>
+            <div class="feature">
+                <img src="images/Pasted image.png" alt="Interactive Lessons">
+                <h3>Interactive Lessons</h3>
+                <p>Engaging and hands-on lessons to keep you focused.</p>
+            </div>
+            <div class="feature">
+                <img src="images/Pasted image 1.png" alt="Flexible Learning">
+                <h3>Flexible Learning</h3>
+                <p>Learn at your own pace, anytime and anywhere.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- User Registration (Sign-Up) -->
+    <section id="sign-up-section">
+        <h2>Create Account</h2>
+        <form id="sign-up-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile-section" style="display: none;">
+        <h2>Welcome, <span id="user-name"></span></h2>
+        <h3>Your Enrolled Courses</h3>
+        <div id="enrolled-courses">
+            <!-- Enrolled courses will go here -->
+        </div>
+        <button onclick="logOut()">Log Out</button>
+    </section>
+
+    <!-- Course Search and Filter -->
+    <section id="courses">
+        <h2 class="section-title">Our Courses</h2>
+        <div id="search-filter-section">
+            <h3>Find Your Course</h3>
+            <input type="text" id="searchBar" placeholder="Search courses..." onkeyup="filterCourses()">
+            <select id="categoryFilter" onchange="filterCourses()">
+                <option value="">Select Category</option>
+                <option value="Math">Mathematics</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+                <option value="Computer">Computer</option>
+            </select>
+        </div>
+
+        <div class="cards-container" id="courseList">
+            <!-- Course Cards -->
+            <div class="card" data-category="Math">
+                <h3>Mathematics</h3>
+                <p>Master algebra, calculus, and geometry with our expert-designed lessons.</p>
+                <button onclick="enrollCourse('Mathematics')">Enroll</button>
+            </div>
+            <div class="card" data-category="Science">
+                <h3>Science</h3>
+                <p>Discover the wonders of physics, chemistry, and biology.</p>
+                <button onclick="enrollCourse('Science')">Enroll</button>
+            </div>
+            <div class="card" data-category="History">
+                <h3>History</h3>
+                <p>Travel back in time and uncover the secrets of our past.</p>
+                <button onclick="enrollCourse('History')">Enroll</button>
+            </div>
+            <div class="card" data-category="Computer">
+                <h3>Computer Science</h3>
+                <p>Learn programming, data science, and machine learning.</p>
+                <button onclick="enrollCourse('Computer Science')">Enroll</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need further assistance, feel free to reach out to us. We'd love to hear from you!</p>
+        <form action="#" method="POST">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AyuQuest. All rights reserved.</p>
+    </footer>
+
+    <!-- Tawk.to Live Chat Script -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/your-tawk-id/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
